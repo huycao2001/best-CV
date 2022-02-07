@@ -1,0 +1,660 @@
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Cv</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"
+        integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="{% static 'css/cv-detail2-view.css'%}">
+    <link rel="icon" type="image/png" href="{% static 'images/flag.png'%}" sizes="1024x1024" />
+</head>
+
+<body>
+    <div class="container">
+        <div class="left_Side">
+
+            <div class="profileText">
+                <div class="imgBx" id="output">
+                    <img src='{{cv.cv_avatar}}' class='cover'>
+                </div>
+                <h2>
+                    <span style="word-break: break-all;" id="title">{{cv.title}}</span>
+                    {% if cv_current_job != '' %}
+                    <br><span style="word-break: break-all;" id="cv_current_job">{{cv.cv_current_job}}</span>
+                    {% endif %}
+                </h2>
+            </div>
+
+            <div class="contactInfo">
+                {% if cv_contact_info != '' %}
+                <h3 class="title" id="cv_contact_info">{{cv.cv_contact_info}}</h3>
+                {% endif %}
+                <ul>
+                    {% if cv_contact_info_gender != '' %}
+                    <li>
+                        <span class="icon"><i class="fa fa-venus-mars" aria-hidden="true"></i></span>
+                        <span class="text" id="cv_contact_info_gender" style="word-break: break-all;">{{cv.cv_contact_info_gender}}</span>
+                    </li>
+                    {% endif %}
+
+                    {% if cv_contact_info_phone != '' %}
+                    <li>
+                        <span class="icon"><i class="fa fa-phone" aria-hidden="true"></i></span>
+                        <span class="text" id="cv_contact_info_phone">{{cv.cv_contact_info_phone}}</span>
+                    </li>
+                    {% endif %}
+
+                    {% if cv_contact_info_gmail != '' %}
+                    <li>
+                        <span class="icon"><i class="fa fa-envelope" aria-hidden="true"></i></span>
+                        <span class="text" id="cv_contact_info_gmail">{{cv.cv_contact_info_gmail}}</span>
+                    </li>
+                    {% endif %}
+
+                    {% if cv_contact_info_website != '' %}
+                    <li>
+                        <span class="icon"><i class="fa fa-chrome" aria-hidden="true"></i></span>
+                        <span class="text" id="cv_contact_info_website">{{cv.cv_contact_info_website}}</span>
+                    </li>
+                    {% endif %}
+
+                    {% if cv_contact_info_facebook != '' %}
+                    <li>
+                        <span class="icon"><i class="fa fa-facebook" aria-hidden="true"></i></span>
+                        <span class="text" id="cv_contact_info_facebook">{{cv.cv_contact_info_facebook}}</span>
+                    </li>
+                    {% endif %}
+
+                    {% if cv_contact_info_home != '' %}
+                    <li>
+                        <span class="icon"><i class="fa fa-map-marker" aria-hidden="true"></i></span>
+                        <span class="text" id="cv_contact_info_home">{{cv.cv_contact_info_home}}</span>
+                    </li>
+                    {% endif %}
+                </ul>
+            </div>
+
+            {% if count != 0 %}
+            <div class="contactInfo education">
+                {% if cv_education != '' %}
+                <h3 class="title" id="cv_education">{{cv.cv_education}}</h3>
+                {% endif %}
+
+                <ul id="cv_education_list">
+                    {% if count > 0 %}
+                    <li id="cv_degree_item1">
+                        {% if cv_graduation_time1 != '' %}
+                        <h5 id="cv_graduation_time1">{{cv.cv_graduation_time1}}</h5>
+                        {% endif %}
+
+                        {% if cv_degree1 != '' %}
+                        <h4 id="cv_degree1">{{cv.cv_degree1}}</h4>
+                        {% endif %}
+
+                        {% if cv_graduation_school1 != '' %}
+                        <h4 id=cv_graduation_school1>{{cv.cv_graduation_school1}}</h4>
+                        {% endif %}
+                    </li>
+                    {% endif %}
+
+                    {% if count > 1 %}
+                    <li id="cv_degree_item2">
+                        {% if cv_graduation_time2 != '' %}
+                        <h5 id="cv_graduation_time2">{{cv.cv_graduation_time2}}</h5>
+                        {% endif %}
+
+                        {% if cv_degree2 != '' %}
+                        <h4 id="cv_degree2">{{cv.cv_degree2}}</h4>
+                        {% endif %}
+
+                        {% if cv_graduation_school2 != '' %}
+                        <h4 id=cv_graduation_school2>{{cv.cv_graduation_school2}}</h4>
+                        {% endif %}
+                    </li>
+                    {% endif %}
+
+                    {% if count != 2 %}
+                    <li id="cv_degree_item3">
+                        {% if cv_graduation_time3 != '' %}
+                        <h5 id="cv_graduation_time3">{{cv.cv_graduation_time3}}</h5>
+                        {% endif %}
+
+                        {% if cv_degree3 != '' %}
+                        <h4 id="cv_degree3">{{cv.cv_degree3}}</h4>
+                        {% endif %}
+
+                        {% if cv_graduation_school3 != '' %}
+                        <h4 id=cv_graduation_school3>{{cv.cv_graduation_school3}}</h4>
+                        {% endif %}
+                    </li>
+                    {% endif %}
+                </ul>
+            </div>
+            {% endif %}
+
+            {% if cv_count_lang > 0 %}
+            <div class="contactInfo language">
+                {% if cv_lang != '' %}
+                <h3 class="title" id="cv_lang">{{cv.cv_lang}}</h3>
+                {% endif %}
+                <ul>
+                    {% if cv_lang1 != '' %}
+                    <li id="cv_lang_item1">
+                        <span class="text" id="cv_lang1">{{cv.cv_lang1}}</span>
+
+                        <span class="percent">
+                            <div style='width: {{cv.cv_lang1_expert}}%;'></div>
+                        </span>
+                    </li>
+                    {% endif %}
+
+                    {% if cv_lang2 != '' %}
+                    <li id="cv_lang_item2">
+                        <span class="text" id="cv_lang2">{{cv.cv_lang2}}</span>
+                        <span class="percent">
+                            <div style='width: {{cv.cv_lang2_expert}}%;'></div>
+                        </span>
+                    </li>
+                    {% endif %}
+
+                    {% if cv_lang3 != '' %}
+                    <li id="cv_lang_item3">
+                        <span class="text" id="cv_lang3">{{cv.cv_lang3}}</span>
+                        <span class="percent">
+                            <div style='width: {{cv.cv_lang3_expert}}%;'></div>
+                        </span>
+                    </li>
+                    {% endif %}
+
+
+                    {% if cv_lang4 != '' %}
+                    <li id="cv_lang_item4">
+                        <span class="text" id="cv_lang4">{{cv.cv_lang4}}</span>
+                        <span class="percent">
+                            <div style='width: {{cv.cv_lang4_expert}}%;'></div>
+                        </span>
+                    </li>
+                    {% endif %}
+
+                    {% if cv_lang5 != '' %}
+                    <li id="cv_lang_item5">
+                        <span class="text" id="cv_lang5">{{cv.cv_lang5}}</span>
+                        <span class="percent">
+                            <div style='width: {{cv.cv_lang5_expert}}%;'></div>
+                        </span>
+                    </li>
+                    {% endif %}
+                </ul>
+            </div>
+            {% endif %}
+        </div>
+
+        <div class="right_Side">
+            <div class="about">
+                {% if cv_profile != '' %}
+                <h2 class="title2" id="cv_profile">{{cv.cv_profile}}</h2>
+                {% endif %}
+                {% if description != '' %}
+                <p style="word-break: break-all;" id="description">{{cv.description}}</p>
+                {% endif %}
+            </div>
+
+            {% if cv_count_experience != 0 %}
+            <div class="about">
+                {% if cv_experience != '' %}
+                <h2 class="title2" id="cv_experience">{{cv.cv_experience}}</h2>
+                {% endif %}
+
+                {% if cv_count_experience > 0 %}
+                <div class="box" id="cv_experience_item1">
+                    <div class="year_company">
+                        {% if cv_working_time1 != '' %}
+                        <h5 id="cv_working_time1">{{cv.cv_working_time1}}</h5>
+                        {% endif %}
+
+                        {% if cv_company_name1 != '' %}
+                        <h5 id="cv_company_name1">{{cv.cv_company_name1}}</h5>
+                        {% endif %}
+
+                    </div>
+                    <div class="text">
+                        {% if cv_company_role1 != '' %}
+                        <h4 id="cv_company_role1">{{cv.cv_company_role1}}</h4>
+                        {% endif %}
+
+                        {% if cv_job_description1 != '' %}
+                        <p id="cv_job_description1">{{cv.cv_job_description1}}</p>
+                        {% endif %}
+                    </div>
+                </div>
+                {% endif %}
+
+                {% if cv_count_experience > 1 %}
+                <div class="box" id="cv_experience_item2">
+                    <div class="year_company">
+                        {% if cv_working_time2 != '' %}
+                        <h5 id="cv_working_time2">{{cv.cv_working_time2}}</h5>
+                        {% endif %}
+
+                        {% if cv_company_name2 != '' %}
+                        <h5 id="cv_company_name2">{{cv.cv_company_name2}}</h5>
+                        {% endif %}
+                    </div>
+
+                    <div class="text">
+                        {% if cv_company_role2 != '' %}
+                        <h4 id="cv_company_role2">{{cv.cv_company_role2}}</h4>
+                        {% endif %}
+
+                        {% if cv_job_description2 != '' %}
+                        <p id="cv_job_description2">{{cv.cv_job_description2}}</p>
+                        {% endif %}
+                    </div>
+                </div>
+                {% endif %}
+
+                {% if cv_count_experience > 2 %}
+                <div class="box" id="cv_experience_item3">
+                    <div class="year_company">
+                        {% if cv_working_time3 != '' %}
+                        <h5 id="cv_working_time3">{{cv.cv_working_time3}}</h5>
+                        {% endif %}
+
+                        {% if cv_company_name3 != '' %}
+                        <h5 id="cv_company_name3">{{cv.cv_company_name3}}</h5>
+                        {% endif %}
+
+                    </div>
+                    <div class="text">
+                        {% if cv_company_role3 != '' %}
+                        <h4 id="cv_company_role3">{{cv.cv_company_role3}}</h4>
+                        {% endif %}
+
+                        {% if cv_job_description3 != '' %}
+                        <p id="cv_job_description3">{{cv.cv_job_description3}}</p>
+                        {% endif %}
+                    </div>
+                </div>
+                {% endif %}
+
+                {% if cv_count_experience > 3 %}
+                <div class="box" id="cv_experience_item4">
+                    <div class="year_company">
+                        {% if cv_working_time4 != '' %}
+                        <h5 id="cv_working_time4">{{cv.cv_working_time4}}</h5>
+                        {% endif %}
+
+                        {% if cv_company_name4 != '' %}
+                        <h5 id="cv_company_name4">{{cv.cv_company_name4}}</h5>
+                        {% endif %}
+
+                    </div>
+                    <div class="text">
+                        {% if cv_company_role4 != '' %}
+                        <h4 id="cv_company_role4">{{cv.cv_company_role4}}</h4>
+                        {% endif %}
+
+                        {% if cv_job_description4 != '' %}
+                        <p id="cv_job_description4">{{cv.cv_job_description4}}</p>
+                        {% endif %}
+                    </div>
+                </div>
+                {% endif %}
+
+                {% if cv_count_experience > 4 %}
+                <div class="box" id="cv_experience_item5">
+                    <div class="year_company">
+                        {% if cv_working_time5 != '' %}
+                        <h5 id="cv_working_time5">{{cv.cv_working_time5}}</h5>
+                        {% endif %}
+
+                        {% if cv_company_name5 != '' %}
+                        <h5 id="cv_company_name5">{{cv.cv_company_name5}}</h5>
+                        {% endif %}
+                    </div>
+                    <div class="text">
+                        {% if cv_company_role5 != '' %}
+                        <h4 id="cv_company_role5">{{cv.cv_company_role5}}</h4>
+                        {% endif %}
+
+                        {% if cv_job_description5 != '' %}
+                        <p id="cv_job_description5">{{cv.cv_job_description5}}</p>
+                        {% endif %}
+                    </div>
+                </div>
+                {% endif %}
+
+            </div>
+            {% endif %}
+
+            {% if cv_count_activity != 0 %}
+            <div class="about activity">
+                {% if cv_activity != '' %}
+                <h2 class="title2" id="cv_activity">{{cv.cv_activity}}</h2>
+                {% endif %}
+
+                {% if cv_count_activity > 0 %}
+                <div class="box" id="cv_activity_item1">
+                    <div class="year_company">
+                        {% if cv_activity_working_time1 != '' %}
+                        <h5 id="cv_activity_working_time1">{{cv.cv_activity_working_time1}}</h5>
+                        {% endif %}
+
+                        {% if cv_activity_company_name1 != '' %}
+                        <h5 id="cv_activity_company_name1">{{cv.cv_activity_company_name1}}</h5>
+                        {% endif %}
+                    </div>
+                    <div class="text">
+                        {% if cv_activity_company_role1 != '' %}
+                        <h4 id="cv_activity_company_role1">{{cv.cv_activity_company_role1}}</h4>
+                        {% endif %}
+
+                        {% if cv_activity_job_description1 != '' %}
+                        <p id="cv_activity_job_description1">{{cv.cv_activity_job_description1}}</p>
+                        {% endif %}
+                    </div>
+                </div>
+                {% endif %}
+
+                {% if cv_count_activity > 1 %}
+                <div class="box" id="cv_activity_item2">
+                    <div class="year_company">
+                        {% if cv_activity_working_time2 != '' %}
+                        <h5 id="cv_activity_working_time2">{{cv.cv_activity_working_time2}}</h5>
+                        {% endif %}
+
+                        {% if cv_activity_company_name2 != '' %}
+                        <h5 id="cv_activity_company_name2">{{cv.cv_activity_company_name2}}</h5>
+                        {% endif %}
+                    </div>
+                    <div class="text">
+                        {% if cv_activity_company_role2 != '' %}
+                        <h4 id="cv_activity_company_role2">{{cv.cv_activity_company_role2}}</h4>
+                        {% endif %}
+
+                        {% if cv_activity_job_description2 != '' %}
+                        <p id="cv_activity_job_description2">{{cv.cv_activity_job_description2}}</p>
+                        {% endif %}
+                    </div>
+                </div>
+                {% endif %}
+
+                {% if cv_count_activity > 2 %}
+                <div class="box" id="cv_activity_item3">
+                    <div class="year_company">
+                        {% if cv_activity_working_time3 != '' %}
+                        <h5 id="cv_activity_working_time3">{{cv.cv_activity_working_time3}}</h5>
+                        {% endif %}
+
+                        {% if cv_activity_company_name3 != '' %}
+                        <h5 id="cv_activity_company_name3">{{cv.cv_activity_company_name3}}</h5>
+                        {% endif %}
+                    </div>
+                    <div class="text">
+                        {% if cv_activity_company_role3 != '' %}
+                        <h4 id="cv_activity_company_role3">{{cv.cv_activity_company_role3}}</h4>
+                        {% endif %}
+
+                        {% if cv_activity_job_description3 != '' %}
+                        <p id="cv_activity_job_description3">{{cv.cv_activity_job_description3}}</p>
+                        {% endif %}
+
+                    </div>
+                </div>
+                {% endif %}
+
+                {% if cv_count_activity > 3 %}
+                <div class="box" id="cv_activity_item4">
+                    <div class="year_company">
+                        {% if cv_activity_working_time4 != '' %}
+                        <h5 id="cv_activity_working_time4">{{cv.cv_activity_working_time4}}</h5>
+                        {% endif %}
+
+                        {% if cv_activity_company_name4 != '' %}
+                        <h5 id="cv_activity_company_name4">{{cv.cv_activity_company_name4}}</h5>
+                        {% endif %}
+                    </div>
+                    <div class="text">
+                        {% if cv_activity_company_role4 != '' %}
+                        <h4 id="cv_activity_company_role4">{{cv.cv_activity_company_role4}}</h4>
+                        {% endif %}
+
+                        {% if cv_activity_job_description4 != '' %}
+                        <p id="cv_activity_job_description4">{{cv.cv_activity_job_description4}}</p>
+                        {% endif %}
+                    </div>
+                </div>
+                {% endif %}
+
+                {% if cv_count_activity > 4 %}
+                <div class="box" id="cv_activity_item5">
+                    <div class="year_company">
+                        {% if cv_activity_working_time5 != '' %}
+                        <h5 id="cv_activity_working_time5">{{cv.cv_activity_working_time5}}</h5>
+                        {% endif %}
+
+                        {% if cv_activity_company_name5 != '' %}
+                        <h5 id="cv_activity_company_name5">{{cv.cv_activity_company_name5}}</h5>
+                        {% endif %}
+                    </div>
+                    <div class="text">
+                        {% if cv_activity_company_role5 != '' %}
+                        <h4 id="cv_activity_company_role5">{{cv.cv_activity_company_role5}}</h4>
+                        {% endif %}
+
+                        {% if cv_activity_job_description5 != '' %}
+                        <p id="cv_activity_job_description5">{{cv.cv_activity_job_description5}}</p>
+                        {% endif %}
+                    </div>
+                </div>
+                {% endif %}
+
+            </div>
+            {% endif %}
+
+            {% if cv_count_skill != 0 %}
+            <div class="about skills">
+                {% if cv_skill != '' %}
+                <h2 class="title2" id="cv_skill">{{cv.cv_skill}}</h2>
+                {% endif %}
+
+                {% if cv_skill1 != '' %}
+                <div class="box" id="cv_skill_item1">
+                    <h4 style="word-break: break-all;" id="cv_skill1">{{cv.cv_skill1}}</h4>
+                    <span class="percent">
+                        <div style='width: {{cv.cv_skill1_expert}}%;'></div>
+                    </span>
+                </div>
+                {% endif %}
+
+                {% if cv_skill2 != '' %}
+                <div class="box" id="cv_skill_item2">
+                    <h4 style="word-break: break-all;" id="cv_skill2">{{cv.cv_skill2}}</h4>
+                    <span class="percent">
+                        <div style='width: {{cv.cv_skill2_expert}}%;'></div>
+                    </span>
+                </div>
+                {% endif %}
+
+                {% if cv_skill3 != '' %}
+                <div class="box" id="cv_skill_item3">
+                    <h4 style="word-break: break-all;" id="cv_skill3">{{cv.cv_skill3}}</h4>
+                    <span class="percent">
+                        <div style='width: {{cv.cv_skill3_expert}}%;'></div>
+                    </span>
+                </div>
+                {% endif %}
+
+                {% if cv_skill4 != '' %}
+                <div class="box" id="cv_skill_item4">
+                    <h4 style="word-break: break-all;" id="cv_skill4">{{cv.cv_skill4}}</h4>
+                    <span class="percent">
+                        <div style='width: {{cv.cv_skill4_expert}}%;'></div>
+                    </span>
+                </div>
+                {% endif %}
+
+                {% if cv_skill5 != '' %}
+                <div class="box" id="cv_skill_item5">
+                    <h4 style="word-break: break-all;" id="cv_skill5">{{cv.cv_skill5}}</h4>
+                    <span class="percent">
+                        <div style='width: {{cv.cv_skill5_expert}}%;'></div>
+                    </span>
+                </div>
+                {% endif %}
+
+                {% if cv_skill6 != '' %}
+                <div class="box" id="cv_skill_item6">
+                    <h4 style="word-break: break-all;" id="cv_skill6">{{cv.cv_skill6}}</h4>
+                    <span class="percent">
+                        <div style='width: {{cv.cv_skill6_expert}}%;'></div>
+                    </span>
+                </div>
+                {% endif %}
+
+                {% if cv_skill7 != '' %}
+                <div class="box" id="cv_skill_item7">
+                    <h4 style="word-break: break-all;" id="cv_skill7">{{cv.cv_skill7}}</h4>
+                    <span class="percent">
+                        <div style='width: {{cv.cv_skill7_expert}}%;'></div>
+                    </span>
+                </div>
+                {% endif %}
+
+                {% if cv_skill8 != '' %}
+                <div class="box" id="cv_skill_item8">
+                    <h4 style="word-break: break-all;" id="cv_skill8">{{cv.cv_skill8}}</h4>
+                    <span class="percent">
+                        <div style='width: {{cv.cv_skill8_expert}}%;'></div>
+                    </span>
+                </div>
+                {% endif %}
+
+                {% if cv_skill9 != '' %}
+                <div class="box" id="cv_skill_item9">
+                    <h4 style="word-break: break-all;" id="cv_skill9">{{cv.cv_skill9}}</h4>
+                    <span class="percent">
+                        <div style='width: {{cv.cv_skill9_expert}}%;'></div>
+                    </span>
+                </div>
+                {% endif %}
+
+                {% if cv_skill10 != '' %}
+                <div class="box" id="cv_skill_item10">
+                    <h4 style="word-break: break-all;" id="cv_skill10">{{cv.cv_skill10}}</h4>
+                    <span class="percent">
+                        <div style='width: {{cv.cv_skill10_expert}}%;'></div>
+                    </span>
+                </div>
+                {% endif %}
+            </div>
+            {% endif %}
+
+            {% if cv_count_cer != 0 %}
+            <div class="about">
+                {% if cv_cer != '' %}
+                <h2 class="title2" id="cv_cer">{{cv.cv_cer}}</h2>
+                {% endif %}
+                <!-- A box of experience info -->
+                {% if cv_cer_name1 != '' %}
+                <div class="text" id="cv_cer_item1">
+                    <span class="text_cer" id="cv_cer_year1">{{cv.cv_cer_year1}}</span>
+                    <span>: </span>
+                    <span id="cv_cer_name1">{{cv.cv_cer_name1}}</span>
+                </div>
+                {% endif %}
+
+                {% if cv_cer_name2 != '' %}
+                <div class="text" id="cv_cer_item2">
+                    <span class="text_cer" id="cv_cer_year2">{{cv.cv_cer_year2}}</span>
+                    <span>: </span>
+                    <span id="cv_cer_name2">{{cv.cv_cer_name2}}</span>
+                </div>
+                {% endif %}
+
+                {% if cv_cer_name3 != '' %}
+                <div class="text" id="cv_cer_item3">
+                    <span class="text_cer" id="cv_cer_year3">{{cv.cv_cer_year3}}</span>
+                    <span>: </span>
+                    <span id="cv_cer_name3">{{cv.cv_cer_name3}}</span>
+                </div>
+                {% endif %}
+
+                {% if cv_cer_name4 != '' %}
+                <div class="text" id="cv_cer_item4">
+                    <span class="text_cer" id="cv_cer_year4">{{cv.cv_cer_year4}}</span>
+                    <span>: </span>
+                    <span id="cv_cer_name4">{{cv.cv_cer_name4}}</span>
+                </div>
+                {% endif %}
+
+                {% if cv_cer_name5 != '' %}
+                <div class="text" id="cv_cer_item5">
+                    <span class="text_cer" id="cv_cer_year5">{{cv.cv_cer_year5}}</span>
+                    <span>: </span>
+                    <span id="cv_cer_name5">{{cv.cv_cer_name5}}</span>
+                </div>
+                {% endif %}
+            </div>
+            {% endif %}
+
+            {% if cv_count_interest != 0 %}
+            <div class="about interest">
+                {% if cv_interest != '' %}
+                <h2 class="title2" id="cv_interest">{{cv.cv_interest}}</h2>
+                {% endif %}
+                <ul>
+                    {% if cv_interest1 != '' %}
+                    <li style="word-break: break-all;" id="cv_interest1">{{cv.cv_interest1}}</li>
+                    {% endif %}
+
+                    {% if cv_interest2 != '' %}
+                    <li style="word-break: break-all;" id="cv_interest2">{{cv.cv_interest2}}</li>
+                    {% endif %}
+
+                    {% if cv_interest3 != '' %}
+                    <li style="word-break: break-all;" id="cv_interest3">{{cv.cv_interest3}}</li>
+                    {% endif %}
+
+                    {% if cv_interest4 != '' %}
+                    <li style="word-break: break-all;" id="cv_interest4">{{cv.cv_interest4}}</li>
+                    {% endif %}
+
+                    {% if cv_interest5 != '' %}
+                    <li style="word-break: break-all;" id="cv_interest5">{{cv.cv_interest5}}</li>
+                    {% endif %}
+
+                    {% if cv_interest6 != '' %}
+                    <li style="word-break: break-all;" id="cv_interest6">{{cv.cv_interest6}}</li>
+                    {% endif %}
+
+                    {% if cv_interest7 != '' %}
+                    <li style="word-break: break-all;" id="cv_interest7"> {{cv.cv_interest7}}</li>
+                    {% endif %}
+
+                    {% if cv_interest8 != '' %}
+                    <li style="word-break: break-all;" id="cv_interest8">{{cv.cv_interest8}}</li>
+                    {% endif %}
+
+                    {% if cv_interest9 != '' %}
+                    <li style="word-break: break-all;" id="cv_interest9">{{cv.cv_interest9}}</li>
+                    {% endif %}
+
+                    {% if cv_interest10 != '' %}
+                    <li style="word-break: break-all;" id="cv_interest10">{{cv.cv_interest10}}</li>
+                    {% endif %}
+                </ul>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+
+
+
+</body>
+
+</html>

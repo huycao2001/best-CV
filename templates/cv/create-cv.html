@@ -1,0 +1,322 @@
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Cv</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"
+        integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="stylesheet" href="{% static 'css/cv-detail1.css'%}">
+</head>
+
+<body>
+    <div class="container">
+        <div class="left_Side">
+            <div class="profileText">
+                <input type="file" accept="image/*">
+                <div class="imgBx" id="output">
+                    <img src='{{cv.cv_avatar}}' class='cover'>"
+                </div>
+                <h2><span id="title" type="text" placeholder="Enter your name" required
+                        contenteditable="true">{{cv.title}}</span>
+                    <br><span>Database Developer</span>
+                </h2>
+            </div>
+            <div class="contactInfo">
+                <h3 class="title" contenteditable="True" id="cv_contact_info">{{cv.cv_contact_info}}</h3>
+                <ul>
+                    <li>
+                        <span class="icon"><i class="fa fa-gender" aria-hidden="true"></i></span>
+                        <span class="text" contenteditable="True"
+                            id="cv_contact_info_gender">{{cv.cv_contact_info_gender}}</span>
+                    </li>
+                    <li>
+                        <span class="icon"><i class="fa fa-phone" aria-hidden="true"></i></span>
+                        <span class="text" contenteditable="True"
+                            id="cv_contact_info_phone">{{cv.cv_contact_info_phone}}</span>
+                    </li>
+                    <li>
+                        <span class="icon"><i class="fa fa-envelope" aria-hidden="true"></i></span>
+                        <span class="text" contenteditable="True"
+                            id="cv_contact_info_gmail">{{cv.cv_contact_info_gmail}}</span>
+                    </li>
+                    <li>
+                        <span class="icon"><i class="fa fa-chrome" aria-hidden="true"></i></span>
+                        <span class="text" contenteditable="True"
+                            id="cv_contact_info_website">{{cv.cv_contact_info_website}}</span>
+                    </li>
+                    <li>
+                        <span class="icon"><i class="fa fa-facebook" aria-hidden="true"></i></span>
+                        <span class="text" contenteditable="True"
+                            id="cv_contact_info_facebook">{{cv.cv_contact_info_facebook}}</span>
+                    </li>
+                    <li>
+                        <span class="icon"><i class="fa fa-map-marker" aria-hidden="true"></i></span>
+                        <span class="text" contenteditable="True"
+                            id="cv_contact_info_home">{{cv.cv_contact_info_home}}</span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="contactInfo education">
+                <h3 class="title" id="cv_education" contenteditable="True">Education</h3>
+                <ul id="cv_education_list">
+                    <button id="add_button" style="display:  block" onclick="add_education()">Add item</button>
+                    <button id="delete_button" style="display:  block" onclick="delete_education()">Delete item</button>
+            
+                    <li id="cv_degree_item1" style="display:  block">
+                        <h5 contenteditable="True" id="cv_graduation_time1">2010 - 2013</h5>
+                        <h4 contenteditable="True" id="cv_degree1">Master Degree in Computer Science</h4>
+                        <h4 contenteditable="True" id=cv_graduation_school1>University Name</h4>
+                    </li>
+            
+                    <li id="cv_degree_item2" style="display:  none">
+                        <h5 contenteditable="True" id="cv_graduation_time2">2010 - 2013</h5>
+                        <h4 contenteditable="True" id="cv_degree2">Master Degree in Computer Science</h4>
+                        <h4 contenteditable="True" id=cv_graduation_school2>University Name</h4>
+                    </li>
+            
+                    <li id="cv_degree_item3" style="display:  none">
+                        <h5 contenteditable="True" id="cv_graduation_time3">2010 - 2013</h5>
+                        <h4 contenteditable="True" id="cv_degree3">Master Degree in Computer Science</h4>
+                        <h4 contenteditable="True" id=cv_graduation_school3>University Name</h4>
+                    </li>
+            
+            
+            
+                </ul>
+            </div>
+            
+            <div class="contactInfo language">
+                <h3 class="title">Languages</h3>
+                <ul>
+                    <li>
+                        <span class="text">English</span>
+                        <span class="percent">
+                            <div style="width: 90%;"></div>
+                        </span>
+                    </li>
+                    <li>
+                        <span class="text">VietNamese</span>
+                        <span class="percent">
+                            <div style="width: 98%;"></div>
+                        </span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="right_Side">
+            <div class="about">
+                <h2 class="title2">Profile</h2>
+                <p>Hi, I am {{cv.title}}. {{cv.description}}</p>
+            </div>
+            <div class="about">
+                <h2 class="title2">Experience</h2>
+                <div class="box">
+                    <div class="year_company">
+                        <h5>2019 - Present</h5>
+                        <h5>Company Name</h5>
+                    </div>
+                    <div class="text">
+                        <h4>Senior DB Developer</h4>
+                        <p>I’m the sole DBA and developer in a production environment, working with multiple
+                            terabyte
+                            databases.</p>
+                    </div>
+                </div>
+                <div class="box">
+                    <div class="year_company">
+                        <h5>2019 - Present</h5>
+                        <h5>Company Name</h5>
+                    </div>
+                    <div class="text">
+                        <h4>Senior DB Developer</h4>
+                        <p>I’m the sole DBA and developer in a production environment, working with multiple
+                            terabyte
+                            databases.</p>
+                    </div>
+                </div>
+                <div class="box">
+                    <div class="year_company">
+                        <h5>2017 - 2019</h5>
+                        <h5>DB Designer</h5>
+                    </div>
+                    <div class="text">
+                        <h4>Company Name</h4>
+                        <p>I’m the sole DBA and developer in a production environment, working with multiple
+                            terabyte
+                            databases.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="about skills">
+                <h2 class="title2">Professional Skills</h2>
+                <div class="box">
+                    <h4>Draw.io</h4>
+                    <div class="percent">
+                        <div style="width: 95%;"></div>
+                    </div>
+                </div>
+                <div class="box">
+                    <h4>Luchidchart</h4>
+                    <div class="percent">
+                        <div style="width: 75%;"></div>
+                    </div>
+                </div>
+                <div class="box">
+                    <h4>DBDiagram</h4>
+                    <div class="percent">
+                        <div style="width: 80%;"></div>
+                    </div>
+                </div>
+                <div class="box">
+                    <h4>Oracle</h4>
+                    <div class="percent">
+                        <div style="width: 85%;"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="about interest">
+                <h2 class="title2">interest</h2>
+                <ul>
+                    <li>Singing</li>
+                    <li>Reading</li>
+                    <li>Playing</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <form id="form" method="post" action={% url 'create-cv' %}>
+        {% csrf_token %}
+        <input type="text" name="title" value="{{cv.title}}" />
+        <input type="text" name="description" value="{{cv.description}}" />
+        <input type="text" name="cv_avatar" value="{{cv.cv_avatar}}" />
+        <input type="text" name="cv_contact_info" value="{{cv.cv_contact_info}}" />
+        <input type="text" name="cv_contact_info_phone" value="{{cv.cv_contact_info_phone}}" />
+        <input type="text" name="cv_contact_info_gender" value="{{cv.cv_contact_info_gender}}" />
+        <input type="text" name="cv_contact_info_gmail" value="{{cv.cv_contact_info_gmail}}" />
+        <input type="text" name="cv_contact_info_website" value="{{cv.cv_contact_info_website}}" />
+        <input type="text" name="cv_contact_info_facebook" value="{{cv.cv_contact_info_facebook}}" />
+        <input type="text" name="cv_contact_info_home" value="{{cv.cv_contact_info_home}}" />
+        <input type="checkbox" name="is_published" />
+
+        <input type='text' name='cv_education' value={{cv_education}} />
+        <input type='text' name='cv_degree1' value={{cv_degree1}} />
+        <input type='text' name='cv_graduation_time1' value={{cv_graduation_time1}} />
+        <input type='text' name='cv_graduation_school1' value={{cv_graduation_school1}} />
+        <input type='text' name='cv_degree2' value={{cv_degree2}} />
+        <input type='text' name='cv_graduation_time2' value={{cv_graduation_time2}} />
+        <input type='text' name='cv_graduation_school2' value={{cv_graduation_school2}} />
+        <input type='text' name='cv_degree3' value={{cv_degree3}} />
+        <input type='text' name='cv_graduation_time3' value={{cv_graduation_time3}} />
+        <input type='text' name='cv_graduation_school3' value={{cv_graduation_school3}} />
+        
+        <input type='text' name='cv_lang' value={{cv_lang}} />
+        <input type='text' name='cv_lang1' value={{cv_lang1}} />
+        <input type='text' name='cv_lang2' value={{cv_lang2}} />
+        <input type='text' name='cv_lang3' value={{cv_lang3}} />
+        <input type='text' name='cv_lang4' value={{cv_lang4}} />
+        <input type='text' name='cv_lang5' value={{cv_lang5}} />
+        
+        <input type='text' name='cv_profile' value={{cv_profile}} />
+        <input type='text' name='cv_company_role1' value={{cv_company_role1}} />
+        <input type='text' name='cv_job_description1' value={{cv_job_description1}} />
+        <input type='text' name='cv_company_name1' value={{cv_company_name1}} />
+        <input type='text' name='cv_working_time1' value={{cv_working_time1}} />
+        
+        <input type='text' name='cv_company_role2' value={{cv_company_role2}} />
+        <input type='text' name='cv_job_description2' value={{cv_job_description2}} />
+        <input type='text' name='cv_company_name2' value={{cv_company_name2}} />
+        <input type='text' name='cv_working_time2' value={{cv_working_time2}} />
+        
+        <input type='text' name='cv_company_role3' value={{cv_company_role3}} />
+        <input type='text' name='cv_job_description3' value={{cv_job_description3}} />
+        <input type='text' name='cv_company_name3' value={{cv_company_name3}} />
+        <input type='text' name='cv_working_time3' value={{cv_working_time3}} />
+        
+        <input type='text' name='cv_company_role4' value={{cv_company_role4}} />
+        <input type='text' name='cv_job_description4' value={{cv_job_description4}} />
+        <input type='text' name='cv_company_name4' value={{cv_company_name4}} />
+        <input type='text' name='cv_working_time4' value={{cv_working_time4}} />
+        
+        <input type='text' name='cv_company_role5' value={{cv_company_role5}} />
+        <input type='text' name='cv_job_description5' value={{cv_job_description5}} />
+        <input type='text' name='cv_company_name5' value={{cv_company_name5}} />
+        <input type='text' name='cv_working_time5' value={{cv_working_time5}} />
+        
+        <input type='text' name='cv_skill' value={{cv_skill}} />
+        <input type='text' name='cv_skill1' value={{cv_skill1}} />
+        <input type='text' name='cv_skill1_expert' value={{cv_skill1_expert}} />
+        <input type='text' name='cv_skill2' value={{cv_skill2}} />
+        <input type='text' name='cv_skill2_expert' value={{cv_skill2_expert}} />
+        <input type='text' name='cv_skill3' value={{cv_skill3}} />
+        <input type='text' name='cv_skill3_expert' value={{cv_skill3_expert}} />
+        <input type='text' name='cv_skill4' value={{cv_skill4}} />
+        <input type='text' name='cv_skill4_expert' value={{cv_skill4_expert}} />
+        <input type='text' name='cv_skill5' value={{cv_skill5}} />
+        <input type='text' name='cv_skill5_expert' value={{cv_skill5_expert}} />
+        <input type='text' name='cv_skill6' value={{cv_skill6}} />
+        <input type='text' name='cv_skill6_expert' value={{cv_skill6_expert}} />
+        <input type='text' name='cv_skill7' value={{cv_skill7}} />
+        <input type='text' name='cv_skill7_expert' value={{cv_skill7_expert}} />
+        <input type='text' name='cv_skill8' value={{cv_skill8}} />
+        <input type='text' name='cv_skill8_expert' value={{cv_skill8_expert}} />
+        <input type='text' name='cv_skill9' value={{cv_skill9}} />
+        <input type='text' name='cv_skill9_expert' value={{cv_skill9_expert}} />
+        <input type='text' name='cv_skill10' value={{cv_skill10}} />
+        <input type='text' name='cv_skill10_expert' value={{cv_skill10_expert}} />
+        
+        <input type='text' name='cv_interest' value={{cv_interest}} />
+        <input type='text' name='cv_interest1' value={{cv_interest1}} />
+        <input type='text' name='cv_interest2' value={{cv_interest2}} />
+        <input type='text' name='cv_interest3' value={{cv_interest3}} />
+        <input type='text' name='cv_interest4' value={{cv_interest4}} />
+        <input type='text' name='cv_interest5' value={{cv_interest5}} />
+        <input type='text' name='cv_interest6' value={{cv_interest6}} />
+        <input type='text' name='cv_interest7' value={{cv_interest7}} />
+        <input type='text' name='cv_interest8' value={{cv_interest8}} />
+        <input type='text' name='cv_interest9' value={{cv_interest9}} />
+        <input type='text' name='cv_interest10' value={{cv_interest10}} />
+        
+        <input type='text' name='cv_cer' value={{cv_cer}} />
+        <input type='text' name='cv_cer_year1' value={{cv_cer_year1}} />
+        <input type='text' name='cv_cer_name1' value={{cv_cer_name1}} />
+        <input type='text' name='cv_cer_year2' value={{cv_cer_year2}} />
+        <input type='text' name='cv_cer_name2' value={{cv_cer_name2}} />
+        <input type='text' name='cv_cer_year3' value={{cv_cer_year3}} />
+        <input type='text' name='cv_cer_name3' value={{cv_cer_name3}} />
+        <input type='text' name='cv_cer_year4' value={{cv_cer_year4}} />
+        <input type='text' name='cv_cer_name4' value={{cv_cer_name4}} />
+        <input type='text' name='cv_cer_year5' value={{cv_cer_year5}} />
+        <input type='text' name='cv_cer_name5' value={{cv_cer_name5}} />
+        
+        <input type='text' name='cv_act' value={{cv_act}} />
+        <input type='text' name='cv_act_year1' value={{cv_act_year1}} />
+        <input type='text' name='cv_act_name1' value={{cv_act_name1}} />
+        <input type='text' name='cv_act_year2' value={{cv_act_year2}} />
+        <input type='text' name='cv_act_name2' value={{cv_act_name2}} />
+        <input type='text' name='cv_act_year3' value={{cv_act_year3}} />
+        <input type='text' name='cv_act_name3' value={{cv_act_name3}} />
+        <input type='text' name='cv_act_year4' value={{cv_act_year4}} />
+        <input type='text' name='cv_act_name4' value={{cv_act_name4}} />
+        <input type='text' name='cv_act_year5' value={{cv_act_year5}} />
+        <input type='text' name='cv_act_name5' value={{cv_act_name5}} />
+        <input type="submit" value="Submit">
+
+    </form>
+
+
+    <script src="https://dl.dropboxusercontent.com/s/nvklmhq3kw4j9pq/jquerylasted.js?dl=0"></script>
+    <script type="text/javascript" src="{% static 'js/model.js'%}"></script>
+    <script type="text/javascript" src="{% static 'js/upload_image.js'%}"></script>
+
+</body>
+
+</html>

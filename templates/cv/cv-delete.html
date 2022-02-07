@@ -1,0 +1,29 @@
+{% extends '_partials/base.html' %}
+
+{% load static %}
+{% block css %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"
+    integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css"
+    integrity="sha512-8bHTC73gkZ7rZ7vpqUQThUDhqcNFyYi2xgDgPDHc+GXVGHXq+xPjynxIopALmOPqzo9JZj0k6OqqewdGO3EsrQ=="
+    crossorigin="anonymous" />
+<link rel="stylesheet" href="{% static 'css/home.css'%}">
+<link rel="icon" type="image/png" href="{% static 'images/flag.png'%}" sizes="1024x1024" />
+
+{% endblock css %}
+{% block content %}
+<div class="index-container">
+  
+    <form method="POST"  action={% url 'cv-delete' cv.id %} class="ui form">
+        {% csrf_token %}
+        <h1>Are you sure you want to delete this CV?</h1>
+
+        <input type="submit" class="ui button negative" value="YES">
+            <a href={% url 'home'%}><span style="color:blue; font-size: 1.4rem;font-weight: bold;">Cancel</span></a>
+        </form>
+
+
+  
+    
+    {% endblock content %}

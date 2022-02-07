@@ -1,0 +1,118 @@
+{% extends '_partials/base.html' %}
+
+{% load static %}
+{% block css %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"
+  integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg=="
+  crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css"
+  integrity="sha512-8bHTC73gkZ7rZ7vpqUQThUDhqcNFyYi2xgDgPDHc+GXVGHXq+xPjynxIopALmOPqzo9JZj0k6OqqewdGO3EsrQ=="
+  crossorigin="anonymous" />
+<link rel="stylesheet" href="{% static 'css/home.css'%}">
+<link rel="icon" type="image/png" href="{% static 'images/flag.png'%}" sizes="1024x1024" />
+
+{% endblock css %}
+{% block content %} 
+<div class="index-container">
+  {% include '_partials/messages.html' %}
+  <h1 class="ui header">My List of CVs</h1>
+  {% if cvs %}
+  <ul class="cards">
+    {% for cv in cvs %}
+    <li>
+      <div class="card">
+        <img src="{{cv.cv_avatar}}" class="card__image" alt="" />
+        <div class="card__overlay">
+          <div class="card__header">
+            {% if cv.cv_contact_info_gender == 'Male'%}
+              <img class="card__thumb" src="{% static 'images/boy.jpg' %}" />
+            {% else %}
+              <img class="card__thumb" src="{% static 'images/girl.jpg' %}" />
+            {% endif %}
+            <div class="card__header-text">
+              <h3 class="card__title" ><a href={% url 'cv' cv.pk %} class="card_icon">
+                {{cv.title}}
+              </a>
+              {% if cv.is_published %}
+                <i class="check icon green"></i>
+              {% endif %}
+              </h3>
+              <span class="card__status">{{cv.cv_current_job}}</span>
+            </div>
+            
+            <a href={% url 'cv-edit' cv.pk %} class="card_icon">
+              <i class="pencil icon"></i>
+            </a>
+            <a href={% url 'cv-delete' cv.pk %} class="card_icon">
+              <i class="trash icon"></i>
+            </a>
+          </div>
+          <p class="card__description">{{cv.description}}
+          </p>
+        </div>
+      </div>
+    </li>
+    {% endfor %}
+  </ul>
+  {% else %}
+  <div    style="padding-bottom: 1rem;
+    color: white;
+    font-size: 1.2rem;">
+    <p>You haven't had any CV yet. Let's <a href={% url 'choose-template' %}>create new CV</a> now.</p>
+  </div>
+  {% endif %}
+</div>
+
+<div class="indexSearch-container">
+  <h1 class="ui header">Other CVs or Jobs</h1>
+  <span class="search-box">
+    <button class="btn-search"><i class="fa fa-search"></i></button>
+    <input type="text" class="input-search" id="searchField" placeholder="Jobs or Candidates name">
+  </span>
+  <div class="table-output">
+    {% if cv_search %}
+    
+    <ul class="cards">
+      {% for cv in cv_search %}
+      <li>
+        <div class="card">
+          <img src="{{cv.cv_avatar}}" class="card__image" alt="" />
+          <div class="card__overlay">
+            <div class="card__header">
+              {% if cv.cv_contact_info_gender == 'Male'%}
+              <img class="card__thumb" src="{% static 'images/boy.jpg' %}" />
+              {% else %}
+              <img class="card__thumb" src="{% static 'images/girl.jpg' %}" />
+              {% endif %}
+              <div class="card__header-text">
+                <h3 class="card__title"><a href={% url 'cv' cv.pk %} class="card_icon">
+                    {{cv.title}}
+                  </a>
+                  {% if cv.is_published %}
+                  <i class="check icon green"></i>
+                  {% endif %}
+                </h3>
+                <span class="card__status">{{cv.cv_current_job}}</span>
+              </div>
+  
+            </div>
+            <p class="card__description">{{cv.description}}
+            </p>
+          </div>
+        </div>
+      </li>
+      {% endfor %}
+    </ul>
+    {% endif %}
+
+  </div>
+  <div>
+     
+  </div>
+</div>
+
+
+<script src="{% static 'js/searchExpenses.js' %}"></script>
+
+
+{% endblock content %}

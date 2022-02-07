@@ -1,0 +1,65 @@
+{% load static %}
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Cv</title>
+  <link rel="icon" type="image/png" href="{% static 'images/flag.png'%}" sizes="1024x1024" />
+
+
+  <link rel="stylesheet" href="{% static 'css/cv1.css'%}">
+</head>
+<body>
+  {% include "_partials/header.html" %}
+  
+  <div class="navigation">
+    <script src="https://dl.dropboxusercontent.com/s/nvklmhq3kw4j9pq/jquerylasted.js?dl=0"></script>
+    <input type="file" accept="image/*">
+    <div class="banner" id="output"></div>
+    <div class="navLink">
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Services</a></li>
+        <li><a href="#">Portfolio</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <section class="sec">
+    <header>
+      <div class="toggle"></div>
+      <a href="#" class="btn">Hire Me</a>
+    </header>
+    <div class="imgBx">
+      <img src="{% static 'images/girl.jpg'%}" class="cover" alt="">
+    </div>
+    <div class="content">
+      <h2>Hi, I am<br><span>{{cv.title}}</span></h2>
+      <p>{{cv.description}}</p>
+      <a href="cv-detail1" class="btn">Download my CV</a>
+    </div>
+    <footer>
+      <ul class="sci">
+        <li><a href="#"><img src="{% static 'images/facebook.png'%}" alt=""></a></li>
+        <li><a href="#"><img src="{% static 'images/instagram.png'%}" alt=""></a></li>
+        <li><a href="#"><img src="{% static 'images/twitter.png'%}" alt=""></a></li>
+      </ul>
+      <p class="copyRightText">@2021 NMD</p>
+    </footer>
+  </section>
+  <script>
+    let menuToggle = document.querySelector('.toggle');
+    let navigation = document.querySelector('.navigation');
+    let sec = document.querySelector('.sec');
+    menuToggle.onclick = function(){
+      menuToggle.classList.toggle('active');
+      navigation.classList.toggle('active');
+      sec.classList.toggle('active');
+    }
+  </script>
+  
+</body>
+</html>

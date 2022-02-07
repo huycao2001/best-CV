@@ -1,0 +1,441 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BestCV</title>
+    <link rel="stylesheet" href="{% static 'css/header.css'%}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"
+        integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="{% static 'css/cv-detail2.css'%}">
+    <link rel="icon" type="image/png" href="{% static 'images/flag.png'%}" sizes="1024x1024" />
+</head>
+
+<body>
+    <nav class="nav affix">
+        <div class="header-container">
+            <div class="logo">
+                <a id="len1" class="hoverable" href={% url 'home' %}>BestCV</a>
+            </div>
+
+        </div>
+    </nav>
+    <div class="container">
+        <div class="left_Side">
+
+            <div class="profileText">
+                <div class="imgBx" id="output">
+                    <img src='{{cv.cv_avatar}}' class='cover'>"
+
+                </div>
+                <input type="file" id="upload-photo" accept="image/*">
+                <label style="color: white;" for="upload-photo">Choose avatar</label>
+                <h2><span style="word-break: break-all;" id="title" placeholder="Enter your name" required contenteditable="true">{{cv.title}}</span>
+                    <br><span style="word-break: break-all;" id="cv_current_job" placeholder="Enter your job" required
+                        contenteditable="true">{{cv.cv_current_job}}</span>
+                </h2>
+            </div>
+
+            <div class="contactInfo">
+                <h3 class="title" contenteditable="True" id="cv_contact_info">{{cv.cv_contact_info}}</h3>
+                <ul>
+
+                    <li>
+                        <span class="icon"><i class="fa fa-venus-mars" aria-hidden="true"></i></span>
+                        <span class="text" contenteditable="True"
+                            id="cv_contact_info_gender">{{cv.cv_contact_info_gender}}</span>
+                    </li>
+                    <li>
+                        <span class="icon"><i class="fa fa-phone" aria-hidden="true"></i></span>
+                        <span class="text" contenteditable="True"
+                            id="cv_contact_info_phone">{{cv.cv_contact_info_phone}}</span>
+                    </li>
+                    <li>
+                        <span class="icon"><i class="fa fa-envelope" aria-hidden="true"></i></span>
+                        <span class="text" contenteditable="True"
+                            id="cv_contact_info_gmail">{{cv.cv_contact_info_gmail}}</span>
+                    </li>
+                    <li>
+                        <span class="icon"><i class="fa fa-chrome" aria-hidden="true"></i></span>
+                        <span class="text" contenteditable="True"
+                            id="cv_contact_info_website">{{cv.cv_contact_info_website}}</span>
+                    </li>
+                    <li>
+                        <span class="icon"><i class="fa fa-facebook" aria-hidden="true"></i></span>
+                        <span class="text" contenteditable="True"
+                            id="cv_contact_info_facebook">{{cv.cv_contact_info_facebook}}</span>
+                    </li>
+                    <li>
+                        <span class="icon"><i class="fa fa-map-marker" aria-hidden="true"></i></span>
+                        <span class="text" contenteditable="True"
+                            id="cv_contact_info_home">{{cv.cv_contact_info_home}}</span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="contactInfo education">
+                <h3 class="title" id="cv_education" contenteditable="True">{{cv.cv_education}}</h3>
+                <ul id="cv_education_list">
+                    <button id="add_education" style="display:  inline-block" onclick="add_education()">add</button>
+                    <button id="delete_education" style="display:  inline-block" onclick="delete_education()">Delete
+                        item</button>
+
+                    <li id="cv_degree_item1" style="display:  block">
+                        <h5 contenteditable="True" id="cv_graduation_time1">{{cv.cv_graduation_time1}}</h5>
+                        <h4 contenteditable="True" id="cv_degree1">{{cv.cv_degree1}}</h4>
+                        <h4 contenteditable="True" id=cv_graduation_school1>{{cv.cv_graduation_school1}}</h4>
+                    </li>
+
+                    <li id="cv_degree_item2" style="display:  none">
+                        <h5 contenteditable="True" id="cv_graduation_time2">{{cv.cv_graduation_time2}}</h5>
+                        <h4 contenteditable="True" id="cv_degree2">{{cv.cv_degree2}}</h4>
+                        <h4 contenteditable="True" id=cv_graduation_school2>{{cv.cv_graduation_school2}}</h4>
+                    </li>
+
+                    <li id="cv_degree_item3" style="display:  none">
+                        <h5 contenteditable="True" id="cv_graduation_time3">{{cv.cv_graduation_time3}}</h5>
+                        <h4 contenteditable="True" id="cv_degree3">{{cv.cv_degree3}}</h4>
+                        <h4 contenteditable="True" id=cv_graduation_school3>{{cv.cv_graduation_school3}}</h4>
+                    </li>
+
+
+
+                </ul>
+            </div>
+
+            <div class="contactInfo language">
+                <h3 class="title" id="cv_lang" contenteditable="True">{{cv.cv_lang}}</h3>
+                <ul>
+                    <button id="add_lang" style="display:  inline-block" onclick="add_lang()">add</button>
+                    <button id="delete_lang" style="display:  inline-block" onclick="delete_lang()">delete</button>
+                    <li id="cv_lang_item1" style="display:  block">
+                        <span class="text" id="cv_lang1" contenteditable="True">{{cv.cv_lang1}}</span>
+                        <input class="percent" type="range" id="cv_lang1_expert" value="80"
+                            oninput="cv_lang1_expert_function()">
+                    </li>
+                    <li id="cv_lang_item2" style="display:  block">
+                        <span class="text" id="cv_lang2" contenteditable="True">{{cv.cv_lang2}}</span>
+                        <input class="percent" type="range" id="cv_lang2_expert" value="95"
+                            oninput="cv_lang2_expert_function()">
+                    </li>
+                    <li id="cv_lang_item3" style="display:  none">
+                        <span class="text" id="cv_lang3" contenteditable="True">{{cv.cv_lang3}}</span>
+                        <input class="percent" type="range" id="cv_lang3_expert" value="80"
+                            oninput="cv_lang3_expert_function()">
+                    </li>
+                    <li id="cv_lang_item4" style="display:  none">
+                        <span class="text" id="cv_lang4" contenteditable="True">{{cv.cv_lang4}}</span>
+                        <input class="percent" type="range" id="cv_lang4_expert" value="80"
+                            oninput="cv_lang4_expert_function()">
+                    </li>
+                    <li id="cv_lang_item5" style="display:  none">
+                        <span class="text" id="cv_lang5" contenteditable="True">{{cv.cv_lang5}}</span>
+                        <input class="percent" type="range" id="cv_lang5_expert" value="80"
+                            oninput="cv_lang5_expert_function()">
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="right_Side">
+            <div class="about">
+                <h2 class="title2" id="cv_profile" contenteditable="True">{{cv.cv_profile}}</h2>
+                <p style="word-break: break-all;" id="description" contenteditable="True">{{cv.description}}</p>
+            </div>
+
+            <div class="about">
+                <h2 class="title2" id="cv_experience" contenteditable="True">{{cv.cv_experience}}</h2>
+
+                <button id="add_experience" style="display:  inline-block" onclick="add_experience()">add</button>
+                <button id="delete_experience" style="display:  inline-block" onclick="delete_experience()">Delete
+                    item</button>
+
+                <!-- A box of experience info -->
+                <div class="box" id="cv_experience_item1" style="display:  block">
+                    <div class="year_company">
+                        <h5 id="cv_working_time1" contenteditable="True">{{cv.cv_working_time1}}</h5>
+                        <h5 id="cv_company_name1" contenteditable="True">{{cv.cv_company_name1}}</h5>
+                    </div>
+                    <div class="text">
+                        <h4 id="cv_company_role1" contenteditable="True">{{cv.cv_company_role1}}</h4>
+                        <p id="cv_job_description1" contenteditable="True">{{cv.cv_job_description1}}</p>
+                    </div>
+                </div>
+                <!-- End of the box  -->
+
+                <!-- Begin box -->
+                <div class="box" id="cv_experience_item2" style="display:  block">
+                    <div class="year_company">
+                        <h5 id="cv_working_time2" contenteditable="True">{{cv.cv_working_time2}}</h5>
+                        <h5 id="cv_company_name2" contenteditable="True">{{cv.cv_company_name2}}</h5>
+                    </div>
+                    <div class="text">
+                        <h4 id="cv_company_role2" contenteditable="True">{{cv.cv_company_role2}}</h4>
+                        <p id="cv_job_description2" contenteditable="True">{{cv.cv_job_description2}}</p>
+                    </div>
+                </div>
+                <!-- End box -->
+
+                <!-- Begin box  -->
+                <div class="box" id="cv_experience_item3" style="display:  none">
+                    <div class="year_company">
+                        <h5 id="cv_working_time3" contenteditable="True">{{cv.cv_working_time3}}</h5>
+                        <h5 id="cv_company_name3" contenteditable="True">{{cv.cv_company_name3}}</h5>
+                    </div>
+                    <div class="text">
+                        <h4 id="cv_company_role3" contenteditable="True">{{cv.cv_company_role3}}</h4>
+                        <p id="cv_job_description3" contenteditable="True">{{cv.cv_job_description3}}</p>
+                    </div>
+                </div>
+                <!-- End box -->
+
+                <!-- Begin box  -->
+                <div class="box" id="cv_experience_item4" style="display:  none">
+                    <div class="year_company">
+                        <h5 id="cv_working_time4" contenteditable="True">{{cv.cv_working_time4}}</h5>
+                        <h5 id="cv_company_name4" contenteditable="True">{{cv.cv_company_name4}}</h5>
+                    </div>
+                    <div class="text">
+                        <h4 id="cv_company_role4" contenteditable="True">{{cv.cv_company_role4}}</h4>
+                        <p id="cv_job_description4" contenteditable="True">{{cv.cv_job_description4}}</p>
+                    </div>
+                </div>
+                <!-- End box -->
+
+                <!-- Begin box  -->
+                <div class="box" id="cv_experience_item5" style="display:  none">
+                    <div class="year_company">
+                        <h5 id="cv_working_time5" contenteditable="True">{{cv.cv_working_time5}}</h5>
+                        <h5 id="cv_company_name5" contenteditable="True">{{cv.cv_company_name5}}</h5>
+                    </div>
+                    <div class="text">
+                        <h4 id="cv_company_role5" contenteditable="True">{{cv.cv_company_role5}}</h4>
+                        <p id="cv_job_description5" contenteditable="True">{{cv.cv_job_description5}}</p>
+                    </div>
+                </div>
+                <!-- End box -->
+
+            </div>
+
+            <div class="about">
+                <h2 class="title2" id="cv_activity" contenteditable="True">{{cv.cv_activity}}</h2>
+
+                <button id="add_activity" style="display:  inline-block" onclick="add_activity()">add</button>
+                <button id="delete_activity" style="display:  inline-block" onclick="delete_activity()">delete</button>
+
+                <!-- A box of activity info -->
+                <div class="box" id="cv_activity_item1" style="display:  block">
+                    <div class="year_company">
+                        <h5 id="cv_activity_working_time1" contenteditable="True">{{cv.cv_activity_working_time1}}</h5>
+                        <h5 id="cv_activity_company_name1" contenteditable="True">{{cv.cv_activity_company_name1}}</h5>
+                    </div>
+                    <div class="text">
+                        <h4 id="cv_activity_company_role1" contenteditable="True">{{cv.cv_activity_company_role1}}</h4>
+                        <p id="cv_activity_job_description1" contenteditable="True">{{cv.cv_activity_job_description1}}
+                        </p>
+                    </div>
+                </div>
+                <!-- End of the box  -->
+
+                <!-- Begin box -->
+                <div class="box" id="cv_activity_item2" style="display:  none">
+                    <div class="year_company">
+                        <h5 id="cv_activity_working_time2" contenteditable="True">{{cv.cv_activity_working_time2}}</h5>
+                        <h5 id="cv_activity_company_name2" contenteditable="True">{{cv.cv_activity_company_name2}}</h5>
+                    </div>
+                    <div class="text">
+                        <h4 id="cv_activity_company_role2" contenteditable="True">{{cv.cv_activity_company_role2}}</h4>
+                        <p id="cv_activity_job_description2" contenteditable="True">{{cv.cv_activity_job_description2}}
+                        </p>
+                    </div>
+                </div>
+                <!-- End box -->
+
+                <!-- Begin box  -->
+                <div class="box" id="cv_activity_item3" style="display:  none">
+                    <div class="year_company">
+                        <h5 id="cv_activity_working_time3" contenteditable="True">{{cv.cv_activity_working_time3}}</h5>
+                        <h5 id="cv_activity_company_name3" contenteditable="True">{{cv.cv_activity_company_name3}}</h5>
+                    </div>
+                    <div class="text">
+                        <h4 id="cv_activity_company_role3" contenteditable="True">{{cv.cv_activity_company_role3}}</h4>
+                        <p id="cv_activity_job_description3" contenteditable="True">{{cv.cv_activity_job_description3}}
+                        </p>
+                    </div>
+                </div>
+                <!-- End box -->
+
+                <!-- Begin box  -->
+                <div class="box" id="cv_activity_item4" style="display:  none">
+                    <div class="year_company">
+                        <h5 id="cv_activity_working_time4" contenteditable="True">{{cv.cv_activity_working_time4}}</h5>
+                        <h5 id="cv_activity_company_name4" contenteditable="True">{{cv.cv_activity_company_name4}}</h5>
+                    </div>
+                    <div class="text">
+                        <h4 id="cv_activity_company_role4" contenteditable="True">{{cv.cv_activity_company_role4}}</h4>
+                        <p id="cv_activity_job_description4" contenteditable="True">{{cv.cv_activity_job_description4}}
+                        </p>
+                    </div>
+                </div>
+                <!-- End box -->
+
+                <!-- Begin box  -->
+                <div class="box" id="cv_activity_item5" style="display:  none">
+                    <div class="year_company">
+                        <h5 id="cv_activity_working_time5" contenteditable="True">{{cv.cv_activity_working_time5}}</h5>
+                        <h5 id="cv_activity_company_name5" contenteditable="True">{{cv.cv_activity_company_name5}}</h5>
+                    </div>
+                    <div class="text">
+                        <h4 id="cv_activity_company_role5" contenteditable="True">{{cv.cv_activity_company_role5}}</h4>
+                        <p id="cv_activity_job_description5" contenteditable="True">{{cv.cv_activity_job_description5}}
+                        </p>
+                    </div>
+                </div>
+                <!-- End box -->
+
+            </div>
+
+            <div class="about skills">
+                <h2 class="title2" id="cv_skill" contenteditable="True">{{cv.cv_skill}}</h2>
+                <button id="add_skill" style="display:  inline-block" onclick="add_skill()">add</button>
+                <button id="delete_skill" style="display:  inline-block" onclick="delete_skill()">delete</button>
+
+                <div class="box" id="cv_skill_item1" style="display:  block">
+                    <h4 id="cv_skill1" contenteditable="True">{{cv.cv_skill1}}</h4>
+                    <input class="percent" type="range" id="cv_skill1_expert" value="{{cv.cv_skill1_expert}}"
+                        oninput="cv_skill1_expert_function()">
+                </div>
+
+                <div class="box" id="cv_skill_item2" style="display:  block">
+                    <h4 id="cv_skill2" contenteditable="True">{{cv.cv_skill2}}</h4>
+                    <input class="percent" type="range" id="cv_skill2_expert" value="{{cv.cv_skill2_expert}}"
+                        oninput="cv_skill2_expert_function()">
+                </div>
+
+                <div class="box" id="cv_skill_item3" style="display:  block">
+                    <h4 id="cv_skill3" contenteditable="True">{{cv.cv_skill3}}</h4>
+                    <input class="percent" type="range" id="cv_skill3_expert" value="{{cv.cv_skill3_expert}}"
+                        oninput="cv_skill3_expert_function()">
+                </div>
+
+                <div class="box" id="cv_skill_item4" style="display:  block">
+                    <h4 id="cv_skill4" contenteditable="True">{{cv.cv_skill4}}</h4>
+                    <input class="percent" type="range" id="cv_skill4_expert" value="{{cv.cv_skill4_expert}}"
+                        oninput="cv_skill4_expert_function()">
+                </div>
+
+                <div class="box" id="cv_skill_item5" style="display:  none">
+                    <h4 id="cv_skill5" contenteditable="True">{{cv.cv_skill5}}</h4>
+                    <input class="percent" type="range" id="cv_skill5_expert" value="{{cv.cv_skill5_expert}}"
+                        oninput="cv_skill5_expert_function()">
+                </div>
+
+                <div class="box" id="cv_skill_item6" style="display:  none">
+                    <h4 id="cv_skill6" contenteditable="True">{{cv.cv_skill6}}</h4>
+                    <input class="percent" type="range" id="cv_skill6_expert" value="{{cv.cv_skill6_expert}}"
+                        oninput="cv_skill6_expert_function()">
+                </div>
+
+                <div class="box" id="cv_skill_item7" style="display:  none">
+                    <h4 id="cv_skill7" contenteditable="True">{{cv.cv_skill7}}</h4>
+                    <input class="percent" type="range" id="cv_skill7_expert" value="{{cv.cv_skill7_expert}}"
+                        oninput="cv_skill7_expert_function()">
+                </div>
+
+                <div class="box" id="cv_skill_item8" style="display:  none">
+                    <h4 id="cv_skill8" contenteditable="True">{{cv.cv_skill8}}</h4>
+                    <input class="percent" type="range" id="cv_skill8_expert" value="{{cv.cv_skill8_expert}}"
+                        oninput="cv_skill8_expert_function()">
+                </div>
+
+                <div class="box" id="cv_skill_item9" style="display:  none">
+                    <h4 id="cv_skill9" contenteditable="True">{{cv.cv_skill9}}</h4>
+                    <input class="percent" type="range" id="cv_skill9_expert" value="{{cv.cv_skill9_expert}}"
+                        oninput="cv_skill9_expert_function()">
+                </div>
+
+                <div class="box" id="cv_skill_item10" style="display:  none">
+                    <h4 id="cv_skill10" contenteditable="True">{{cv.cv_skill10}}</h4>
+                    <input class="percent" type="range" id="cv_skill10_expert" value="{{cv.cv_skill10_expert}}"
+                        oninput="cv_skill10_expert_function()">
+                </div>
+            </div>
+
+            <div class="about">
+                <h2 class="title2" id="cv_cer" contenteditable="True">{{cv.cv_cer}}</h2>
+
+                <button id="add_cer" style="display:  inline-block" onclick="add_cer()">add</button>
+                <button id="delete_cer" style="display:  inline-block" onclick="delete_cer()">delete</button>
+
+                <!-- A box of experience info -->
+                <div class="text" id="cv_cer_item1" style="display:  block">
+                    <span class="text_cer" id="cv_cer_year1" contenteditable="True">{{cv.cv_cer_year1}}</span>
+                    <span>: </span>
+                    <span id="cv_cer_name1" contenteditable="True">{{cv.cv_cer_name1}}</span>
+                </div>
+                <div class="text" id="cv_cer_item2" style="display:  block">
+                    <span class="text_cer" id="cv_cer_year2" contenteditable="True">{{cv.cv_cer_year2}}</span>
+                    <span>: </span>
+                    <span id="cv_cer_name2" contenteditable="True">{{cv.cv_cer_name2}}</span>
+                </div>
+                <div class="text" id="cv_cer_item3" style="display:  none">
+                    <span class="text_cer" id="cv_cer_year3" contenteditable="True">{{cv.cv_cer_year3}}</span>
+                    <span>: </span>
+                    <span id="cv_cer_name3" contenteditable="True">{{cv.cv_cer_name3}}</span>
+                </div>
+                <div class="text" id="cv_cer_item4" style="display:  none">
+                    <span class="text_cer" id="cv_cer_year4" contenteditable="True">{{cv.cv_cer_year4}}</span>
+                    <span>: </span>
+                    <span id="cv_cer_name4" contenteditable="True">{{cv.cv_cer_name4}}</span>
+                </div>
+                <div class="text" id="cv_cer_item5" style="display:  none">
+                    <span class="text_cer" id="cv_cer_year5" contenteditable="True">{{cv.cv_cer_year5}}</span>
+                    <span>: </span>
+                    <span id="cv_cer_name5" contenteditable="True">{{cv.cv_cer_name5}}</span>
+                </div>
+            </div>
+
+            <div class="about interest">
+                <h2 class="title2" id="cv_interest" contenteditable="True">{{cv.cv_interest}}</h2>
+                <button id="add_interest" style="display:  inline-block" onclick="add_interest()">add</button>
+                <button id="delete_interest" style="display:  inline-block" onclick="delete_interest()">delete</button>
+                <ul>
+                    <li class ="text" id="cv_interest1" contenteditable="True" style="display:  block">{{cv.cv_interest1}}</li>
+                    <li class ="text" id="cv_interest2" contenteditable="True" style="display:  block">{{cv.cv_interest2}}</li>
+                    <li class ="text" id="cv_interest3" contenteditable="True" style="display:  block">{{cv.cv_interest3}}</li>
+                    <li class ="text" id="cv_interest4" contenteditable="True" style="display:  none">{{cv.cv_interest4}}</li>
+                    <li class ="text" id="cv_interest5" contenteditable="True" style="display:  none">{{cv.cv_interest5}}</li>
+                    <li class ="text" id="cv_interest6" contenteditable="True" style="display:  none">{{cv.cv_interest6}}</li>
+                    <li class ="text" id="cv_interest7" contenteditable="True" style="display:  none"> {{cv.cv_interest7}}</li>
+                    <li class ="text" id="cv_interest8" contenteditable="True" style="display:  none">{{cv.cv_interest8}}</li>
+                    <li class ="text" id="cv_interest9" contenteditable="True" style="display:  none">{{cv.cv_interest9}}</li>
+                    <li class ="text" id="cv_interest10" contenteditable="True" style="display:  none">{{cv.cv_interest10}}</li>
+                </ul>
+
+            </div>
+
+            <form id="form" method="post" action={% url 'create-cv' 2 %}>
+                {% csrf_token %}
+                <input type="text" name="templateNumber" style="display: none" value="2" />
+                {% include '_partials/form.html' %}
+            </form>
+        </div>
+    </div>
+
+
+    <script src="https://dl.dropboxusercontent.com/s/nvklmhq3kw4j9pq/jquerylasted.js?dl=0"></script>
+    <script type="text/javascript" src="{% static 'js/education.js'%}"></script>
+    <script type="text/javascript" src="{% static 'js/activity.js'%}"></script>
+    <script type="text/javascript" src="{% static 'js/certification.js'%}"></script>
+    <script type="text/javascript" src="{% static 'js/skill.js'%}"></script>
+    <script type="text/javascript" src="{% static 'js/language.js'%}"></script>
+    <script type="text/javascript" src="{% static 'js/interest.js'%}"></script>
+    <script type="text/javascript" src="{% static 'js/experience.js'%}"></script>
+    <script type="text/javascript" src="{% static 'js/model.js'%}"></script>
+    <script type="text/javascript" src="{% static 'js/upload_image.js'%}"></script>
+    <script src="{% static 'js/scripts.js'%}"></script>
+</body>

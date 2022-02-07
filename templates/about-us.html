@@ -1,0 +1,97 @@
+{% load static %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/all.css'%}">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+<link rel="stylesheet" href="{% static 'css/header.css'%}">
+<link rel="icon" type="image/png" href="{% static 'images/flag.png'%}" sizes="1024x1024" />
+<title>About us</title>
+{% endblock css %}
+{% block content %}
+<nav class="nav affix">
+  <div class="header-container">
+    <div class="logo">
+      <a id="len1" class="hoverable" href={% url 'home' %}>BestCV</a>
+    </div>
+
+  </div>
+</nav>
+<div class="wrapper">
+    <h1>Our Team</h1>
+    <div class="our_team">
+        <div class="team_member">
+          <div class="member_img">
+             <img src="{% static 'images/Đại.jpg'%}" alt="our_team">
+            <div class="social_media">
+              <div class="facebook item"><i class="fab fa-facebook-f"  onclick="window.open('https://www.facebook.com/ngominhdai2001','_blank');"></i></div>
+              <div class="github item"><i class="fab fa-github" onclick="window.open('https://github.com/NMINHDAI','_blank');"></i></div>
+              <!-- <div class="instagram item"><i class="fab fa-instagram"  onclick="window.open('https://www.instagram.com/bhdcmch/','_blank');"></i></div> -->
+             </div>
+          </div>
+          <h3>Ngô Minh Đại</h3>
+          <span>CEO</span>
+          <p>Hello. I am Đại</p>
+        </div>
+        <div class="team_member">
+           <div class="member_img">
+             <img src="{% static 'images/HUY.png'%}" alt="our_team">
+             <div class="social_media">
+              <div class="facebook item"><i class="fab fa-facebook-f"  onclick="window.open('https://www.facebook.com/huy.cao.3158/','_blank');"></i></div>
+              <div class="github item"><i class="fab fa-github" onclick="window.open('https://github.com/huycao2001','_blank');"></i></div>
+              <div class="instagram item"><i class="fab fa-instagram"  onclick="window.open('https://www.instagram.com/bhdcmch/','_blank');"></i></div> 
+             </div>
+          </div>
+          <h3>Cao Bá Huy</h3>
+          <span>Accountant</span>
+          <p>Hello. I am Huy :D</p>
+      </div>
+        <div class="team_member">
+           <div class="member_img">
+             <img src="{% static 'images/Cầm.png'%}" alt="our_team">
+             <div class="social_media"> 
+               <div class="facebook item"><i class="fab fa-facebook-f"  onclick="window.open('https://www.facebook.com/cuoi.trang.92','_blank');"></i></div>
+               <div class="github item"><i class="fab fa-github" onclick="window.open('https://github.com/Cam-Duc-Le','_blank');"></i></div>
+               <div class="instagram item"><i class="fab fa-instagram"  onclick="window.open('https://www.instagram.com/cam_duc_le/','_blank');"></i></div> 
+             </div>
+          </div>
+          <h3>Lê Đức Cầm</h3>
+          <span>Product Manager</span>
+          <p>Hello. I am Cầm</p>
+      </div>
+        <div class="team_member">
+           <div class="member_img">
+             <img src="{% static 'images/Khoa-modified.png'%}" alt="our_team">
+             <div class="social_media">
+              <div class="facebook item"><i class="fab fa-facebook-f"  onclick="window.open('https://www.facebook.com/surely.nort.7','_blank');"></i></div>
+              <div class="github item"><i class="fab fa-github" onclick="window.open('https://github.com/Raverbury','_blank');"></i></div>
+              <!-- <div class="instagram item"><i class="fab fa-instagram"  onclick="window.open('https://www.instagram.com/bhdcmch/','_blank');"></i></div> -->
+             </div>
+          </div>
+          <h3>Đỗ Đăng Khoa</h3>
+          <span>Product Analyst</span>
+          <p>Hello. I am Khoa</p>
+      </div> 
+      <div class="team_member">
+        <div class="member_img">
+          <img src="{% static 'images/Thien.png'%}" alt="our_team">
+          <div class="social_media">
+            <div class="facebook item"><i class="fab fa-facebook-f"  onclick="window.open('https://www.facebook.com/thegreatthien','_blank');"></i></div>
+            <div class="github item"><i class="fab fa-github" onclick="window.open('https://github.com/normalguy12?tab=repositories','_blank');"></i></div>
+            <div class="instagram item"><i class="fab fa-instagram"  onclick="window.open('https://www.instagram.com/thienthegreat/','_blank');"></i></div>
+          </div>
+       </div>
+       <h3>Huỳnh Phước Thiện</h3>
+      <span>Music Producer</span>
+       <p>Hello. I am Thiện</p>
+   </div>   
+    </div>
+    <h1>Our Goal</h1>
+    <div class = "our_team">
+      <p style="color: aliceblue; font-size: larger;">
+        As we are also aspiring job-seekers, we understand your pain of having to fully design your 
+        own CV with crude tools. To alleviate that pain somewhat, we are committed to building the best
+        CV-designing website ever as a way to help the next generations have a better time pursuing your dreams.
+      </p>
+    </div>
+</div>
+
+{% endblock content %}

@@ -1,0 +1,64 @@
+{% load static %}
+<html lang="en">
+<head>
+    <!-- Created by Rizowan Ahmed Safi -->
+    <!-- website - www.rizowanahmedsafi.com  -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User manual</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/header.css'%}">
+    <link rel="icon" type="image/png" href="{% static 'images/flag.png'%}" sizes="1024x1024" />
+
+
+</head>
+<body>
+    <nav class="nav affix">
+        <div class="header-container">
+            <div class="logo">
+                <a id="len1" class="hoverable" href={% url 'home' %}>BestCV</a>
+            </div>
+    
+        </div>
+    </nav>
+    <div class="services">
+        <div class="max-width">
+            <h1>User Manual</h1>
+            
+            <div class="content">
+                <div class="card">
+                    <div class="box">
+                        <i class="fa fa-sign-in-alt"></i>
+                        <h3>Sign up and log in</h3>
+                        <p>To get started, simply create your user account. This lets you gain access to all of your CVs and what you want to do with them.</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="box">
+                        <i class="fa fa-eye"></i>
+                        <h3>Choose template</h3>
+                        <p>Browse through our catalogue of professional-looking CVs and choose the one that fits you best.</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="box">
+                        <i class="fas fa-tools"></i>
+                        <h3>Build your CV</h3>
+                        <p>Personalize your CV from the ground up with many levels of customization to show your abilities.</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="box">
+                        <i class="fa fa-user-circle"></i>
+                        <h3>Manage your CV</h3>
+                        <p>Publish, take down, edit and remove your CVs as you desire, all accessible from within your account.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
